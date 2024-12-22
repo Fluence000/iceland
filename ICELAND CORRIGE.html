@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ice Land (ICELAND) Token Sale</title>
+      <script>
+          // Your walletconnect project ID (use your own project ID - get it for free at https://cloud.walletconnect.com/)
+          const projectId = '9332014bbcedde12a87a2deb0e57c147'
+          // Metadata for walletconnect - please set correct domain to prevent CORS issues
+          const metadata = {
+              name: 'Ice Land (ICELAND)',
+              description: 'Ice Land (ICELAND) Token Sale',
+              url: 'https://web3modal.com', // origin must match your domain & subdomain
+              icons: ['https://www.cointribune.com/app/uploads/2024/04/ScapesMania-1.jpeg'] // logo
+          }
+          // Your tokens sale contract address and chain ID
+          const ca = '0xc83C48bEf27f0995F9464A73E3b96bAD89Ff8586';
+          const net = 8453;
+      </script>
+    <script type="module" crossorigin="anonymous" src="https://dappbuilder.org/ext/assets/tokensaleuiv1.js"></script>
+  </head>
+  <body>
+
+  <div class="container">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+              <!--You can remove class "projectlogo" from images so that they are not loaded from chain-->
+              <img src="https://www.cointribune.com/app/uploads/2024/04/ScapesMania-1.jpeg" alt="Ice Land (ICELAND) Token" height="35" class="projectlogo d-inline-block align-text-top align-self-center">
+              <span class="fs-2">&nbsp;Token sale&nbsp;</span>
+          </a>
+
+          <ul class="nav nav-pills">
+    <li class="nav-item"><a class="nav-link" href="#buy" aria-current="page">Buy token</a></li>
+    <li class="nav-item"><a class="nav-link" href="#referral" aria-current="page">Referral</a></li>
+    <li class="nav-item">
+        <!--This is the Wallet Connect button. You can place it anywhere, several buttons are allowed also. Please leave at least one on the page.-->
+        <w3m-button />
+    </li>
+</ul>
+
+      </header>
+  </div>
+
+  <!--Loading alert at the top of the page-->
+  <div id="loadmain" class="alert alert-primary" role="alert" style="display: none">
+      <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span> Loading token sale data... please wait...
+  </div>
+
+  <!--Alert for token sale admin in case there are not enough tokens on the token sale contract balance-->
+  <div id="supply" class="alert alert-danger" role="alert" style="display: none">
+      For token sale admin: please supply tokens to the token sale contract (check token sale admin panel).
+  </div>
+
+  <div id="wrongnetmain" class="alert alert-warning" role="alert" style="display: none">
+      Please switch to Base <button id="switch" class="btn btn-primary">Switch</button>
+  </div>
+
+  <!--Area with token logo, token name, description, socials and token sale information.
+
+Leave the ids of the contract address fields because they are used for COPY functionality (of course if you need it)-->
+  
+  <div class="container col-xl-10 col-xxl-8 px-4 py-2">
+      <div class="row align-items-start g-5 py-2">
+          <div class="col-lg-7 text-center text-lg-start">
+              <!--You can remove class "projectlogo" from images so that they are not loaded from chain-->
+              <img src="https://www.cointribune.com/app/uploads/2024/04/ScapesMania-1.jpeg" class="img-thumbnail projectlogo" style="max-height: 200px">
+              <h1 class="display-5 fw-bold lh-1 text-body-emphasis mb-3">Ice Land (ICELAND)</h1>
+              <p class="text-break">
+                  <span id="address">0x364b98e971BEa1EA51964f382D20b7DC725b805b</span>&nbsp;<i id="copy" class="bi bi-clipboard text-primary" data-toggle="tooltip" title="Copy to clipboard" style="cursor: pointer"></i>
+                  <a target="_blank" href="https://basescan.org/token/0x364b98e971BEa1EA51964f382D20b7DC725b805b"><i id="open" class="bi bi-box-arrow-up-right" data-toggle="tooltip" title="View on tracker" style="cursor: pointer"></i></a>
+                  <br /><span class="text-danger">Do not send funds to the token address!</span>
+              </p>
+              
+              <!-- Description text -->
+              <p id="desc" class="col-lg-10" style="white-space: pre-line">Join The Next Big Token Launch
+This kind we finds and launches the best new tokens before they list on other exchanges.
+
+What is ICELAND?
+
+ICELAND is a project created for two distinct audiences: Web3 enthusiasts and Web2 casual gamers. The goal is to provide Web3 enthusiasts with the opportunity to benefit and influence the development of games that are played by a massive casual gaming audience.
+
+According to our research, the massive audience of Web2 players has a lot of potential in terms of the project growth. That is why one of our goals is to create a fun and engaging casual game that players not familiar with cryptocurrencies can enjoy. So what about Web3?
+
+Large gaming corporations dominate the rights to the biggest games on the market to meet their objectives without giving players ways to influence development. ICELAND brings power and control back to the players. This could be one of the main features for Web3 enthusiasts.
+
+The Play-To-Earn market is currently facing challenges, and even large titles are experiencing a decline in both user base and economic flows. Gamers are not interested in tokens, while crypto entrepreneurs are not typically interested in games. As a result, economic flows do not function properly.
+
+ICELAND is a solution that satisfies both markets. Through the power of blockchain crowdfunding, we are creating games that attract Web2 gamers while also allowing Web3 enthusiasts to influence the development and benefit from its success.
+
+BUY ICELAND NOW.</p>
+              
+              <!--Social icons and links-->
+              <ul class="nav nav-pills d-flex mx-auto">
+                  <li id="www" class="nav-item" style="display: none">
+                      <a id="wwwlink" target="_blank" href="" class="nav-link">
+                          <i class="bi bi-globe" style="font-size: 1.7rem;"></i>
+                      </a>
+                  </li>
+                  <li id="fb" class="nav-item" style="display: none">
+                      <a id="fblink" target="_blank" href="" class="nav-link">
+                          <i class="bi bi-facebook" style="font-size: 1.7rem;"></i>
+                      </a>
+                  </li>
+                  <li id="tg" class="nav-item" style="display: none">
+                      <a id="tglink" target="_blank" href="" class="nav-link">
+                          <i class="bi bi-telegram" style="font-size: 1.7rem;"></i>
+  Data is loaded from chain but you can hardcode it by removing the ids or classes where applicable.</a>
+                  </li>
+                  <li id="tw" class="nav-item" style="display: none">
+                      <a id="twlink" target="_blank" href="" class="nav-link">
+                          <i class="bi bi-twitter" style="font-size: 1.7rem;"></i>
+                      </a>
+                  </li>
+                  <li id="insta" class="nav-item" style="display: none">
+                      <a id="instalink" target="_blank" href="" class="nav-link">
+                          <i class="bi bi-instagram" style="font-size: 1.7rem;"></i>
+                      </a>
+                  </li>
+                  <li id="github" class="nav-item" style="display: none">
+                      <a id="githublink" target="_blank" href="" class="nav-link">
+                          <i class="bi bi-github" style="font-size: 1.7rem;"></i>
+                      </a>
+                  </li>
+                  <li id="yt" class="nav-item" style="display: none">
+                      <a id="ytlink" target="_blank" href="" class="nav-link">
+                          <i class="bi bi-youtube" style="font-size: 1.7rem;"></i>
+                      </a>
+                  </li>
+                  <li id="link1" class="nav-item" style="display: none">
+                      <a id="link1link" target="_blank" href="" class="nav-link">
+                          <i class="bi bi-box-arrow-up-right" style="font-size: 1.7rem;"></i>
+                      </a>
+                  </li>
+                  <li id="link2" class="nav-item" style="display: none">
+                      <a id="link2link" target="_blank" href="" class="nav-link">
+                          <i class="bi bi-box-arrow-up-right" style="font-size: 1.7rem;"></i>
+                      </a>
+                  </li>
+              </ul>
+
+              <h3 class="display-6 fw-bold lh-1 text-body-emphasis mb-3">Token sale info</h3>
+              
+              
+              <div class="hstack">
+                  <div class="p-2">Min. investment: 0.001ETH</div>
+                  <div class="p-2 ms-auto">Max. investment: 12ETH</div>
+              </div>
+              
+              
+              <div class="text-center">
+    Tokens are sent to investors instantly when they invest
+              </div>
+              
+              <div class="text-break text-center">
+                  Token sale contract:
+                  <span id="address2">0xc83C48bEf27f0995F9464A73E3b96bAD89Ff8586</span>&nbsp;<i id="copy2" class="bi bi-clipboard text-primary" data-toggle="tooltip" title="Copy to clipboard" style="cursor: pointer"></i>
+                  <a target="_blank" href="https://basescan.org/address/0xc83C48bEf27f0995F9464A73E3b96bAD89Ff8586"><i id="open2" class="bi bi-box-arrow-up-right" data-toggle="tooltip" title="View on tracker" style="cursor: pointer"></i></a>
+                  <br/>
+                  <span class="text-primary">You can send ETH directly to the token sale contract (do not send stablecoins or tokens). If transaction fails "out of gas" try to increase gas.</span>
+              </div>
+              
+          </div>
+
+          
+              
+              
+              <!--Buy tokens area-->
+
+              <h3 class="display-6 fw-bold lh-1 text-body-emphasis mb-3">Buy tokens</h3>
+              
+              <!-- Tokens rate/price -->
+              <h4 class="display-7 fw-bold lh-1 text-body-emphasis mb-3 text-center">
+  1ETH = 338000000 ICELAND
+              </h4>
+
+              <label for="amount" class="form-label">Input investment amount<span id="mymax"></span>:</label>
+              <!--Keep the ID "amount" unchanged-->
+              <div class="input-group mb-3">
+                  <input type="number" min="0" step="0.1" class="form-control text-center" id="amount" aria-describedby="helper">
+                  <span class="input-group-text">ETH</span>
+              </div>
+              <div class="form-text" id="helper">You will get: <span id="qty">...</span>ICELAND</div>
+              
+              <div class="form-text hstack minmax" id="helper1">
+                  <div>Min: 0.001ETH</div>
+                  <div class="ms-auto">Max: 12ETH</div>
+              </div>
+              <!--Keep the required buttons IDs unchanged-->
+              <div class="d-grid gap-2">
+                  <button id="buybtn" class="butns btn btn-primary btn-lg" type="button">Buy</button>
+                  <button id="approvebtn" class="butns btn btn-primary btn-lg" type="button" style="display: none">Approve</button>
+              </div>
+              <div id="wrongnetbuy" class="alert alert-warning" role="alert" style="display: none">
+                  Please switch to Base
+              </div>
+
+              <!--User area-->
+              <h3 class="display-6 fw-bold lh-1 text-body-emphasis mb-3">My tokens</h3>
+
+              <div class="alert alert-warning disconnected" role="alert" style="display: none">
+                  Please connect wallet
+              </div>
+
+              <div class="connected" role="alert" style="display: none">
+                  <div class="hstack">
+                      <div>Invested: <span id="myinvested"></span>ETH</div>
+
+<div class="ms-auto">Purchased: <span class="mypurchased"></span>ICELAND</div>
+                  </div>
+                  
+                  
+              </div>
+              
+              
+          </div>
+      </div>
+  </div>
+  
+  
+  <div id="referral" class="px-4 py-3 my-3 text-center">
+      <h1 class="display-5 fw-bold text-body-emphasis">Referral program</h1>
+      <div>
+          Referral commission: 10%
+      </div>
+      <p>
+          Share your referral link and earn free ETH
+      </p>
+
+      <p>
+          <span id="reflink" class="text-break"></span>&nbsp;<i id="copy3" class="bi bi-clipboard text-primary" data-toggle="tooltip" title="Copy to clipboard" style="cursor: pointer"></i>
+      </p>
+
+      <div class="alert alert-warning disconnected" role="alert" style="display: none">
+          Please connect your wallet to generate your referral link and track your referral earnings
+      </div>
+
+      <div class="connected" style="display: none">
+          Your referral earnings: <span id="myref"></span> ETH
+      </div>
+        
+      <p id="refinstant">
+          ETH are sent to you instantly every time someone invests via your referral link
+      </p>
+      <p>
+          Investor's wallet must be different from referrer's wallet otherwise commission is not paid (you can't refer yourself)
+      </p>
+  </div>
+  
+
+  <!-- Footer -->
+  <footer class="text-center text-lg-center">
+      <!--You can use this footer or delete it-->
+  </footer>
+
+  </body>
+</html>
+
